@@ -1,7 +1,13 @@
 import { Request, Response, Router } from 'express';
 import multer from 'multer';
 import { login, registration } from '../controllers/auth';
-import { createCourse, deleteCourse, getCourse } from '../controllers/courses';
+import {
+    createCourse,
+    deleteCourse,
+    editCourse,
+    getCourse,
+    getCurrentCourse,
+} from '../controllers/courses';
 import {
     loginValidator,
     registerValidator,
@@ -18,8 +24,9 @@ router.delete('/logout', async (req: Request, res: Response) => {
 
 // Courses Route
 router.get('/course/', getCourse);
+router.get('/course/:id', getCurrentCourse);
 router.post('/course', createCourse);
-// router.put('/course/:id', editCourse);
+router.put('/course/:id', editCourse);
 router.delete('/course/:id', deleteCourse);
 
 export default router;

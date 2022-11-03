@@ -5,7 +5,6 @@ import { Course } from '../models/Course';
 // import { validationResult } from 'express-validator';
 
 interface ICourse {
-    id: string | number;
     logo: string;
     title: string;
     duration: string;
@@ -26,6 +25,7 @@ export const getCourse: RequestHandler = async (req, res) => {
         if (course) {
             return res.status(200).send(course);
         }
+        return res.status(404).send({ message: 'Помилка' });
     } catch (e) {
         return res
             .status(404)
@@ -35,14 +35,46 @@ export const getCourse: RequestHandler = async (req, res) => {
 
 export const createCourse: RequestHandler = async (req, res) => {
     try {
-        const body = req.body as ICourse;
+        const body = req.body;
         const course = await Course.create({
             ...body,
         });
         course.save();
-        return res.status(200).send({ message: 'Курс створений' });
+        return res.status(200).send({ message: 'Ok' });
     } catch (e) {
         return res.status(404).send({ message: 'Не вдалося створити курс' });
+    }
+};
+
+export const getCurrentCourse: RequestHandler = async (req, res) => {
+    try {
+        const {
+            params: { id },
+        } = req;
+        const course = await Course.findOne({ where: { link: id } });
+        if (course) {
+            return res.status(200).send(course);
+        }
+        return res.status(404).send({ message: 'Такого курсу немає' });
+    } catch (e) {
+        return res.status(404).send({ message: 'Такого курсу немає' });
+    }
+};
+
+export const editCourse: RequestHandler = async (req, res) => {
+    try {
+        const {
+            body,
+            params: { id },
+        } = req;
+        const course = await Course.findOne({ where: { id } });
+        if (course) {
+            await course.update({ ...body });
+            await course.save();
+            return res.status(200).send({ message: 'Ok' });
+        }
+    } catch (e) {
+        return res.status(404).send({ message: 'Не вдалося змінити курс' });
     }
 };
 
