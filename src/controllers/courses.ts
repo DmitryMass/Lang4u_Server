@@ -2,22 +2,6 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import { RequestHandler } from 'express';
 import { Course } from '../models/Course';
-// import { validationResult } from 'express-validator';
-
-interface ICourse {
-    logo: string;
-    title: string;
-    duration: string;
-    modules: string;
-    details: string;
-    price: string;
-    color: string;
-    link: string;
-    lessons: string;
-    task: string;
-    tests: string;
-    expert: string;
-}
 
 export const getCourse: RequestHandler = async (req, res) => {
     try {

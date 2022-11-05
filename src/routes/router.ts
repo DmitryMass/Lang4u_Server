@@ -8,6 +8,8 @@ import {
     getCourse,
     getCurrentCourse,
 } from '../controllers/courses';
+import { sendLessond } from '../controllers/firstLesson';
+import { sendSupport } from '../controllers/support';
 import {
     loginValidator,
     registerValidator,
@@ -28,5 +30,12 @@ router.get('/course/:id', getCurrentCourse);
 router.post('/course', createCourse);
 router.put('/course/:id', editCourse);
 router.delete('/course/:id', deleteCourse);
+
+// first lesson
+router.post('/lesson', sendLessond);
+// user order
+
+// contact/help/improv
+router.post('/support', sendSupport);
 
 export default router;
