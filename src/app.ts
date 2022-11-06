@@ -19,8 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', router);
-
-app.use('/', (req, res) => res.send({ message: 'Ok' }));
 app.use(errorHandler);
 
 const start = async () => {
