@@ -1,12 +1,14 @@
 {
   "name": "langboxserver",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.14.2"
+  },
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node dist/app.js && serve -s dist",
     "nodemon": "nodemon dist/app.js"
-    
   },
   "keywords": [],
   "author": "",
@@ -36,6 +38,7 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.25.3",
     "sequelize-cli": "^6.5.2",
+    "serve": "^14.0.1",
     "typescript": "^4.8.4"
   },
   "devDependencies": {

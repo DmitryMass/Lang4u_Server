@@ -10,8 +10,6 @@ import cookieParser from 'cookie-parser';
 import { errorHandler } from './middleware/errorHandler';
 // import seqDataBase from './db';
 
-const { PORT } = process.env;
-
 const app = express();
 
 app.use(fileUpload());
@@ -29,8 +27,8 @@ const start = async () => {
     try {
         // await seqDataBase.authenticate();
         // await seqDataBase.sync();
-        app.listen(PORT || 3005, () => {
-            console.log(`Server on port ${PORT}`);
+        app.listen(process.env.PORT || 3005, () => {
+            console.log(`Server on port ${process.env.PORT}`);
         });
     } catch (e) {
         console.log(e);
