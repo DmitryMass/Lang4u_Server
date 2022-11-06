@@ -20,6 +20,7 @@ const seqDataBase = new Sequelize(DATABASE_URL!, {
             rejectUnauthorized: false,
         },
     },
+    host: '0.0.0.0',
 });
 
 export default seqDataBase;
