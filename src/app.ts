@@ -22,7 +22,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', router);
-
+app.use('/', async (req, res) => {
+    console.log('hello');
+    return res.status(200).send({ message: 'Ok' });
+});
 app.use(errorHandler);
 
 const start = async () => {
