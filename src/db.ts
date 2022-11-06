@@ -3,13 +3,11 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 // local
-// const { DATABASE } = process.env;
-
-// const seqDataBase = new Sequelize('lang4u', 'postgres', 'postgres', {
-//     dialect: 'postgres',
-//     host: 'localhost',
-//     port: 5432,
-// });
+const seqDataBase = new Sequelize('lang4u', 'postgres', 'postgres', {
+    dialect: 'postgres',
+    host: 'localhost',
+    port: 5432,
+});
 
 // heroku server postgresql
 // const { DATABASE_URL } = process.env;
@@ -23,4 +21,4 @@ dotenv.config();
 //     host: '0.0.0.0',
 // });
 
-// export default seqDataBase;
+export default seqDataBase;
