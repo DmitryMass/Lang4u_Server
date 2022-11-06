@@ -12,15 +12,15 @@ dotenv.config();
 // });
 
 // heroku server postgresql
-const { DATABASE_URL } = process.env;
-const seqDataBase = new Sequelize(DATABASE_URL!, {
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false,
-        },
-    },
-    host: '0.0.0.0',
-});
+// const { DATABASE_URL } = process.env;
+// const seqDataBase = new Sequelize(DATABASE_URL!, {
+//     dialectOptions: {
+//         ssl: {
+//             require: true,
+//             rejectUnauthorized: false,
+//         },
+//     },
+//     host: '0.0.0.0',
+// });
 
-export default seqDataBase;
+// export default seqDataBase;

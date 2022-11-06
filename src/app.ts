@@ -8,7 +8,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import { errorHandler } from './middleware/errorHandler';
-import seqDataBase from './db';
+// import seqDataBase from './db';
 
 const { PORT } = process.env;
 
@@ -20,18 +20,15 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api', router);
+// app.use('/api', router);
 
-app.use('/', async (req, res) => {
-    console.log('hello');
-    return res.status(200).send({ message: 'Ok' });
-});
+app.use('/', (req, res) => res.send({ message: 'Ok' }));
 app.use(errorHandler);
 
 const start = async () => {
     try {
-        await seqDataBase.authenticate();
-        await seqDataBase.sync();
+        // await seqDataBase.authenticate();
+        // await seqDataBase.sync();
         app.listen(PORT || 3005, () => {
             console.log(`Server on port ${PORT}`);
         });
