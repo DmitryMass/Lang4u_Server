@@ -9,12 +9,11 @@ dotenv.config();
 //     dialect: 'postgres',
 //     host: 'localhost',
 //     port: 5432,
-
 // });
 
 // heroku server postgresql
-const { DATABASE } = process.env;
-const seqDataBase = new Sequelize(DATABASE!, {
+const { DATABASE_URL } = process.env;
+const seqDataBase = new Sequelize(DATABASE_URL!, {
     dialectOptions: {
         ssl: {
             require: true,

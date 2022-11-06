@@ -7,14 +7,14 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-import { json, urlencoded } from 'body-parser';
 import { errorHandler } from './middleware/errorHandler';
 import seqDataBase from './db';
+import http from 'http';
 
 const { PORT } = process.env;
 
 const app = express();
-
+const server = http.createServer(app);
 app.use(fileUpload());
 app.use(cookieParser());
 app.use(cors());
@@ -29,7 +29,7 @@ const start = async () => {
     try {
         seqDataBase.authenticate();
         seqDataBase.sync();
-        app.listen(PORT || 3005, () => {
+        server.listen(PORT || 3005, '0.0.0.0' as any, () => {
             console.log(`Server on port ${PORT}`);
         });
     } catch (e) {
