@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', router);
+
 app.use('/', async (req, res) => {
     console.log('hello');
     return res.status(200).send({ message: 'Ok' });
@@ -29,9 +30,9 @@ app.use(errorHandler);
 
 const start = async () => {
     try {
-        seqDataBase.authenticate();
-        seqDataBase.sync();
-        app.listen(Number(PORT) || 3005, '0.0.0.0', () => {
+        await seqDataBase.authenticate();
+        await seqDataBase.sync();
+        app.listen(PORT || 3005, () => {
             console.log(`Server on port ${PORT}`);
         });
     } catch (e) {
