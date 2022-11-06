@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "nodemon": "nodemon dist/app.js",
-    "web": "node dist/app.js"
+    "start": "node dist/app.js",
+    "nodemon": "nodemon dist/app.js"
+    
   },
   "keywords": [],
   "author": "",

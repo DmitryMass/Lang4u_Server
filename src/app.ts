@@ -32,7 +32,7 @@ const start = async () => {
     try {
         seqDataBase.authenticate();
         seqDataBase.sync();
-        server.listen(PORT || 3005, '0.0.0.0' as any, () => {
+        server.listen(PORT || 3005, () => {
             console.log(`Server on port ${PORT}`);
         });
     } catch (e) {
